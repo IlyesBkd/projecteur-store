@@ -1,0 +1,58 @@
+[
+  {
+    "id": "4FFpHB",
+    "title": "Véritable 4K, images impeccables.",
+    "descriptionHtml": "Vous aimez les images nettes, lumineuses et réalistes ? Le <strong>Nexgear</strong> a été conçu pour vous. Grâce à sa <strong>résolution native 4K</strong>, sa <strong>luminosité de 800 ANSI lumens</strong> et son <strong>rapport de contraste élevé de 20 000:1</strong>, chaque scène prend vie avec une précision saisissante. La technologie <strong>HDR10</strong> accentue les contrastes et sublime les couleurs pour un rendu plus profond et naturel. Que vous regardiez un film dans une pièce sombre ou que vous projetiez en plein jour, ce projecteur s’adapte à toutes les ambiances pour une expérience digne d’une salle de cinéma.",
+    "image": "/images/features/feature-1.jpeg",
+    "reverseOnDesktop": false,
+    "alt": ""
+  },
+  {
+    "id": "QqJMNE",
+    "title": "Auto Focus / Keystone",
+    "descriptionHtml": "Vous n’aimez pas perdre du temps à ajuster l’image ? Nous non plus.<br><br>Le <strong>Nexgear</strong> fait tout pour vous : sa <strong>mise au point automatique</strong> et sa <strong>correction auto-keystone</strong> ajustent instantanément la netteté et l’alignement, peu importe la position du projecteur. Installez-le sur le côté, au plafond ou sur une table — l’image sera toujours parfaitement cadrée. Et grâce à la <strong>fonction zoom 100 % à 50 %</strong>, vous adaptez la taille de l’écran sans bouger le projecteur. L’idéal pour une <strong>soirée cinéma à la maison</strong> ou une <strong>présentation professionnelle sans stress</strong>.",
+    "image": "/images/features/feature-2.png",
+    "reverseOnDesktop": true,
+    "alt": ""
+  },
+  {
+    "id": "eXJ8rk",
+    "title": "Support Pliant, trépied intégré",
+    "descriptionHtml": "Parce que vous aimez avoir le <strong>choix de votre angle de vision</strong>, ce projecteur est livré avec un <strong>support intégré à inclinaison variable </strong> unique. Contrairement aux modèles classiques, il s’incline et pivote librement pour s’adapter à toutes les configurations — mur, plafond, ou même coin de pièce.<br><br>Stable, discret et ingénieux, il vous permet de profiter de vos films préférés où que vous soyez, dans le <strong>plus grand confort</strong>.",
+    "image": "/images/features/feature-3.png",
+    "reverseOnDesktop": false,
+    "alt": ""
+  },
+  {
+    "id": "QYrUyq",
+    "title": "Double Connectivité WAN / WiFi Mirroring",
+    "descriptionHtml": "Vous détestez les branchements compliqués ? Nous aussi.<br><br>Le <strong>Nexgear</strong> est un <strong>véritable projecteur intelligent</strong> : il se connecte à Internet en WiFi ou via un <strong>port WAN filaire</strong>, offrant une stabilité parfaite pour le <strong>streaming 4K</strong>, le <strong>gaming sur PS5/Xbox</strong>, ou les <strong>appels vidéo en grand format</strong>.<br>",
+    "image": "/images/features/feature-4.png",
+    "reverseOnDesktop": true,
+    "alt": ""
+  },
+  {
+    "id": "BFbyiW",
+    "title": "Applications Intégrées",
+    "descriptionHtml": "<br>Le projecteur est livré avec <strong>Netflix, YouTube et d’autres applications préinstallées</strong>, et permet aussi la <strong>mise en miroir sans fil</strong> de votre smartphone ou tablette.<br><br>En un mot : tout ce que vous aimez regarder est à portée de clic — sans câbles, sans limites.",
+    "image": "/images/features/feature-5.png",
+    "reverseOnDesktop": false,
+    "alt": ""
+  },
+  {
+    "id": "WUGbbe",
+    "title": "Projetez n'importe où.",
+    "descriptionHtml": "Parce que votre confort visuel compte, le <strong>Nexgear</strong> est livré avec un <strong>trépied ajustable</strong> et un <strong>système de projection plafond</strong> conçu pour offrir une liberté totale d’installation.<br><br>Le trépied garantit une <strong>stabilité parfaite</strong>, que ce soit sur une table, un sol irrégulier ou en extérieur. Quant à la <strong>projection au plafond</strong>, elle transforme votre expérience en un véritable <strong>cinéma allongé</strong>, idéal pour regarder un film depuis votre lit ou votre canapé.",
+    "image": "/images/features/feature-6.png",
+    "reverseOnDesktop": true,
+    "alt": ""
+  },
+  {
+    "id": "EyTXiU",
+    "title": "Facile à transporter",
+    "descriptionHtml": "Avec son <strong>poids plume de seulement 1,8 kg</strong>, le Nexgear combine portabilité et performance. Sa conception compacte et élégante en fait un compagnon idéal pour toutes les situations : à la maison, en voyage, en camping ou pour une séance de cinéma en plein air. Il prend en charge plusieurs <strong>options de montage</strong> — table, trépied, mur ou plafond — offrant une flexibilité totale pour transformer n’importe quel espace en salle de projection personnelle.",
+    "image": "/images/features/feature-7.jpeg",
+    "reverseOnDesktop": false,
+    "alt": ""
+  }
+]
