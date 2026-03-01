@@ -24,14 +24,14 @@ export function Header() {
     <header
       className={`sticky top-0 z-40 animate-header-slide-in transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 shadow-sm backdrop-blur-md"
-          : "bg-white shadow-none"
+          ? "bg-gray-900/95 shadow-sm backdrop-blur-md"
+          : "bg-gray-900 shadow-none"
       }`}
     >
       <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between py-3.5">
           <Link href="/" className="flex items-center">
-            <Image src="/logo.png" alt="NEXGEAR" width={120} height={32} className="h-8 w-auto" />
+            <Image src="/logo.png" alt="NEXGEAR" width={120} height={32} className="h-8 w-auto brightness-0 invert" />
           </Link>
 
           <a

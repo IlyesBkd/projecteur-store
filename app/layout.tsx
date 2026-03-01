@@ -17,8 +17,13 @@ const headingFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Section Nexgear",
-  description: "Reproduction d'une section produit en Next.js et Tailwind CSS",
+  title: "NEX-GEN — Projecteur 4K Professionnel",
+  description: "Découvrez le projecteur NEXGEAR 4K V12. Qualité 4K native, 800 ANSI Lumens, livraison offerte. Le meilleur projecteur pour votre home cinéma.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
