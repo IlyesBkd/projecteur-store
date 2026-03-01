@@ -49,12 +49,12 @@ export function FAQSection() {
                 >
                   {faq.question}
                   <ChevronDown
-                    className={`h-5 w-5 transition ${isOpen ? "rotate-180" : "rotate-0"}`}
+                    className={`h-5 w-5 shrink-0 transition ${isOpen ? "rotate-180" : "rotate-0"}`}
                     aria-hidden="true"
                   />
                 </button>
                 {isOpen ? (
-                  <div id={`faq-panel-${index}`} className="px-5 pb-4 text-sm text-zinc-300">
+                  <div id={`faq-panel-${index}`} className="mx-auto max-w-lg px-5 pb-4 text-base leading-relaxed text-zinc-300">
                     {faq.answer}
                   </div>
                 ) : null}

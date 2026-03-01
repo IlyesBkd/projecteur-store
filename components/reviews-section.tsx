@@ -71,7 +71,7 @@ function Stars({ rating }: { rating: number }) {
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="rounded-[14px] border border-zinc-300 bg-[#efefef] p-6 shadow-[0_4px_10px_rgba(0,0,0,0.06)] sm:p-7">
+    <article className="rounded-[14px] border border-zinc-300 bg-white p-6 shadow-[0_4px_10px_rgba(0,0,0,0.06)] sm:p-7">
       <div className="flex items-start gap-4">
         <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#d9d9d9] text-[1.45rem] font-semibold text-zinc-600">
           {review.name.charAt(0)}
@@ -92,7 +92,7 @@ function ReviewCard({ review }: { review: Review }) {
 
 export function ReviewsSection() {
   return (
-    <section id="reviews" className="bg-[#ebebeb] py-8 sm:py-12 lg:py-14">
+    <section id="reviews" className="bg-white py-8 sm:py-12 lg:py-14">
       <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-6 lg:grid-cols-3">
           {reviews.map((review) => (

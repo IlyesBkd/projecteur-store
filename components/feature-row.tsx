@@ -36,7 +36,7 @@ export function FeatureRow({ feature, index }: FeatureRowProps) {
         </h2>
 
         <div
-          className="mt-4 max-w-lg text-base leading-relaxed text-white/90 sm:text-lg [&_strong]:font-semibold [&_strong]:text-white"
+          className="mt-4 max-w-[62ch] text-[0.99rem] leading-relaxed text-white/90 sm:text-[1.04rem] [&_strong]:font-semibold [&_strong]:text-white"
           dangerouslySetInnerHTML={{ __html: feature.descriptionHtml }}
         />
       </div>
