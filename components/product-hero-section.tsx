@@ -75,7 +75,7 @@ export function ProductHeroSection() {
     <section id="hero-section" className="bg-white">
       <div className="mx-auto w-full max-w-[1260px] px-4 pb-10 pt-6 sm:px-6 sm:pt-8 lg:px-10 lg:pb-14 lg:pt-10">
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1.13fr_0.87fr] lg:gap-10">
-          <div className="feature-reveal">
+          <div>
             <Image
               src="/images/product/hero-main.png"
               alt="Projecteur NEXGEAR 4K V12 avec trépied intégré"
@@ -87,7 +87,7 @@ export function ProductHeroSection() {
             />
           </div>
 
-          <div className="feature-reveal" style={{ animationDelay: "90ms" }}>
+          <div>
             <div className="flex items-center gap-3 text-[#00b67a]">
               <div className="flex items-center gap-1 text-[13px]">
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -106,7 +106,11 @@ export function ProductHeroSection() {
               Projecteur NEXGEAR 4K V12 avec trépied intégré
             </h1>
 
-            <p className="mt-4 text-[2.15rem] font-semibold leading-none text-[#1d9a56]">{PRODUCT_PRICE}</p>
+            <div className="mt-4 flex items-center gap-3">
+              <span className="text-xl text-gray-400 line-through">199,99 €</span>
+              <span className="text-[2.15rem] font-bold leading-none text-[#e53e3e]">{PRODUCT_PRICE}</span>
+              <span className="rounded-full bg-red-100 px-2.5 py-1 text-xs font-bold text-red-600">-35%</span>
+            </div>
 
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-3 text-sm text-zinc-700 sm:grid-cols-2 sm:text-[15px]">
               {featureItems.map((feature) => (

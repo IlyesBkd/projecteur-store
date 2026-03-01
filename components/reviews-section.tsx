@@ -1,3 +1,5 @@
+import { ScrollReveal } from "./ScrollReveal";
+
 type Review = {
   name: string;
   date?: string;
@@ -92,11 +94,21 @@ function ReviewCard({ review }: { review: Review }) {
 
 export function ReviewsSection() {
   return (
-    <section id="reviews" className="bg-white py-8 sm:py-12 lg:py-14">
+    <section id="reviews" className="bg-white py-10 sm:py-14 lg:py-16">
       <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-6 lg:px-10">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {reviews.map((review) => (
-            <ReviewCard key={review.name} review={review} />
+        <ScrollReveal>
+          <h2 className="text-center font-heading text-3xl font-semibold text-zinc-900 sm:text-4xl">
+            Ce que nos clients disent
+          </h2>
+          <p className="mx-auto mt-3 max-w-lg text-center text-base leading-relaxed text-gray-600">
+            Plus de 2 000 clients satisfaits à travers la France.
+          </p>
+        </ScrollReveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((review, index) => (
+            <ScrollReveal key={review.name} delay={index * 80}>
+              <ReviewCard review={review} />
+            </ScrollReveal>
           ))}
         </div>
       </div>

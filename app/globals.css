@@ -31,8 +31,47 @@ body {
   animation: featureFadeUp 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+@keyframes headerSlideIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-header-slide-in {
+  animation: headerSlideIn 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes scrollFadeUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  transition: none;
+}
+
+.scroll-reveal.is-visible {
+  animation: scrollFadeUp 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .feature-reveal {
+  .feature-reveal,
+  .scroll-reveal,
+  .scroll-reveal.is-visible,
+  .animate-header-slide-in {
     animation: none;
     opacity: 1;
     transform: none;

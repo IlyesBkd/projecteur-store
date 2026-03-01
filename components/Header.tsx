@@ -22,17 +22,21 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-white transition-shadow ${scrolled ? "shadow-sm" : "shadow-none"}`}
+      className={`sticky top-0 z-40 animate-header-slide-in transition-all duration-300 ${
+        scrolled
+          ? "bg-white/80 shadow-sm backdrop-blur-md"
+          : "bg-white shadow-none"
+      }`}
     >
       <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-6 lg:px-10">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-3.5">
           <Link href="/" className="flex items-center">
             <Image src="/logo.png" alt="NEXGEAR" width={120} height={32} className="h-8 w-auto" />
           </Link>
 
           <a
             href={STRIPE_PAYMENT_LINK}
-            className="inline-flex items-center rounded-md border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-600 transition hover:bg-emerald-50"
+            className="inline-flex items-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-105 hover:bg-emerald-500 hover:shadow-emerald-500/40"
           >
             Acheter maintenant
           </a>

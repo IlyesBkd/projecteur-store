@@ -33,7 +33,10 @@ export function StickyCart() {
       <div className="mx-auto flex w-full max-w-[1260px] items-center justify-between gap-3 px-4 py-3 pb-[calc(env(safe-area-inset-bottom)_+_0.75rem)] sm:px-6">
         <div>
           <p className="text-sm font-semibold text-zinc-900">Projecteur NEXGEAR 4K V12</p>
-          <p className="text-base font-bold text-emerald-600">{PRODUCT_PRICE}</p>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-gray-400 line-through">199,99 €</span>
+            <span className="text-base font-bold text-[#e53e3e]">{PRODUCT_PRICE}</span>
+          </div>
         </div>
         <a
           href={STRIPE_PAYMENT_LINK}

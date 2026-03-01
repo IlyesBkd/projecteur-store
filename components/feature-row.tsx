@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import type { FeatureHighlight } from "@/lib/feature-content";
 
+import { ScrollReveal } from "./ScrollReveal";
+
 type FeatureRowProps = {
   feature: FeatureHighlight;
   index: number;
@@ -17,7 +19,7 @@ export function FeatureRow({ feature, index }: FeatureRowProps) {
         index > 0 ? "mt-16 md:mt-20" : ""
       }`}
     >
-      <div className={`${desktopImageOrder} feature-reveal`} style={{ animationDelay: `${index * 90}ms` }}>
+      <ScrollReveal className={desktopImageOrder} delay={index * 100}>
         <div className="relative aspect-square overflow-hidden rounded-[18px] border border-white/10 bg-[#0a101b] shadow-[0_22px_65px_rgba(0,0,0,0.58)] ring-1 ring-white/5">
           <Image
             src={feature.image}
@@ -25,12 +27,12 @@ export function FeatureRow({ feature, index }: FeatureRowProps) {
             fill
             sizes="(min-width: 1280px) 540px, (min-width: 1024px) 45vw, (min-width: 640px) 86vw, 92vw"
             className="object-cover"
-            priority={index < 2}
+            loading="lazy"
           />
         </div>
-      </div>
+      </ScrollReveal>
 
-      <div className={`${desktopTextOrder} feature-reveal`} style={{ animationDelay: `${index * 90 + 80}ms` }}>
+      <ScrollReveal className={desktopTextOrder} delay={index * 100 + 120}>
         <h2 className="font-heading text-[1.45rem] leading-tight text-[#5dc8ff] sm:text-[1.75rem] lg:text-[2rem]">
           {feature.title}
         </h2>
@@ -39,7 +41,7 @@ export function FeatureRow({ feature, index }: FeatureRowProps) {
           className="mt-4 max-w-[62ch] text-[0.99rem] leading-relaxed text-white/90 sm:text-[1.04rem] [&_strong]:font-semibold [&_strong]:text-white"
           dangerouslySetInnerHTML={{ __html: feature.descriptionHtml }}
         />
-      </div>
+      </ScrollReveal>
     </article>
   );
 }
