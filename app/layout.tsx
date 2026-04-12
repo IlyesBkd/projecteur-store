@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Source_Sans_3 } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { VisitorTracker } from "@/components/VisitorTracker";
+
 import "./globals.css";
 
 const bodyFont = Source_Sans_3({
@@ -32,6 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${bodyFont.variable} ${headingFont.variable} bg-white font-body text-zinc-900 antialiased`}
       >
+        <VisitorTracker />
         {children}
       </body>
     </html>
