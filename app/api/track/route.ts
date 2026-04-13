@@ -9,7 +9,8 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { referrer, page, utm_source, utm_medium, utm_campaign } = body;
+    const { referrer, page, utm_source, utm_medium, utm_campaign, event } = body;
+    const eventType = event || "visit";
 
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     const userAgent = req.headers.get("user-agent") || "unknown";
@@ -45,9 +46,11 @@ export async function POST(req: NextRequest) {
 
     const now = new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris" });
 
+    const isCheckout = eventType === "checkout_click";
+
     const embed = {
-      title: "👀 Nouvelle visite sur le site",
-      color: 0x10b981,
+      title: isCheckout ? "💰 Clic sur Acheter maintenant !" : "👀 Nouvelle visite sur le site",
+      color: isCheckout ? 0xf59e0b : 0x10b981,
       fields: [
         { name: "📍 Source", value: source, inline: true },
         { name: "📱 Appareil", value: `${device} — ${browser}`, inline: true },

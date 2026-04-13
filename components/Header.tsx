@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { STRIPE_PAYMENT_LINK } from "@/lib/constants";
+import { CheckoutButton } from "./CheckoutButton";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,12 +34,11 @@ export function Header() {
             <Image src="/logo.png" alt="NEXGEAR" width={120} height={32} className="h-8 w-auto brightness-0 invert" />
           </Link>
 
-          <a
-            href={STRIPE_PAYMENT_LINK}
+          <CheckoutButton
             className="inline-flex items-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-105 hover:bg-emerald-500 hover:shadow-emerald-500/40"
           >
             Acheter maintenant
-          </a>
+          </CheckoutButton>
         </div>
       </div>
     </header>

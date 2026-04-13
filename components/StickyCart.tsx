@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { PRODUCT_PRICE, STRIPE_PAYMENT_LINK } from "@/lib/constants";
+import { PRODUCT_PRICE } from "@/lib/constants";
+
+import { CheckoutButton } from "./CheckoutButton";
 
 export function StickyCart() {
   const [visible, setVisible] = useState(false);
@@ -38,12 +40,11 @@ export function StickyCart() {
             <span className="text-base font-bold text-[#e53e3e]">{PRODUCT_PRICE}</span>
           </div>
         </div>
-        <a
-          href={STRIPE_PAYMENT_LINK}
+        <CheckoutButton
           className="inline-flex items-center justify-center rounded-md bg-[#10b981] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0d9467]"
         >
           Commander
-        </a>
+        </CheckoutButton>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-import { PRODUCT_PRICE, STRIPE_PAYMENT_LINK } from "@/lib/constants";
+import { PRODUCT_PRICE } from "@/lib/constants";
 
+import { CheckoutButton } from "./CheckoutButton";
 import { TrustBadges } from "./TrustBadges";
 
 type FeatureItem = {
@@ -123,12 +124,11 @@ export function ProductHeroSection() {
               ))}
             </div>
 
-            <a
-              href={STRIPE_PAYMENT_LINK}
+            <CheckoutButton
               className="mt-6 block w-full rounded-[6px] bg-[#1c9854] py-3 text-center text-[1.4rem] font-semibold uppercase tracking-[0.02em] text-white transition hover:bg-[#167a43]"
             >
               Acheter maintenant
-            </a>
+            </CheckoutButton>
 
             <TrustBadges />
 
