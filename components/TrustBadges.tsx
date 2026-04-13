@@ -7,10 +7,11 @@ const badges = [
   { label: "Satisfait ou Remboursé 30 jours", icon: RefreshCw },
 ];
 
+
 export function TrustBadges() {
   return (
     <div className="mt-6">
-      <div className="flex flex-wrap items-center justify-center gap-4">
+      <div className="flex flex-wrap items-center justify-center gap-4"> 
         <Image src="/visa.svg" alt="Visa" width={48} height={32} className="h-8 w-auto" />
         <Image src="/mastercard.webp" alt="Mastercard" width={48} height={32} className="h-8 w-auto" />
         <Image src="/apple-pay.svg" alt="Apple Pay" width={48} height={32} className="h-8 w-auto" />
