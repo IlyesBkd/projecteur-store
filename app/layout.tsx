@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Source_Sans_3 } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { VisitorTracker } from "@/components/VisitorTracker";
 
 import "./globals.css";
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${bodyFont.variable} ${headingFont.variable} bg-white font-body text-zinc-900 antialiased`}
       >
+        <GoogleAnalytics />
         <VisitorTracker />
         {children}
       </body>
