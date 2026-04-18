@@ -11,32 +11,36 @@ const legalLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-black text-gray-400">
+    <footer className="bg-gray-950 text-gray-400">
       <div className="mx-auto w-full max-w-[1260px] px-4 py-12 sm:px-6 sm:py-16 lg:px-10">
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-center text-sm">
-          {legalLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="transition-colors duration-300 hover:text-white"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="flex flex-col items-center gap-6">
+          <Image src="/logo.png" alt="NexGear" width={120} height={32} className="h-7 w-auto brightness-0 invert opacity-60" />
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Image src="/visa.svg" alt="Visa" width={40} height={28} className="h-6 w-auto opacity-30 transition-opacity hover:opacity-60" />
+            <Image src="/mastercard.webp" alt="Mastercard" width={40} height={28} className="h-6 w-auto opacity-30 transition-opacity hover:opacity-60" />
+            <Image src="/paypal.png" alt="PayPal" width={40} height={28} className="h-6 w-auto opacity-30 transition-opacity hover:opacity-60" />
+            <Image src="/apple-pay.svg" alt="Apple Pay" width={40} height={28} className="h-6 w-auto opacity-30 transition-opacity hover:opacity-60" />
+            <Image src="/google_pay.png" alt="Google Pay" width={40} height={28} className="h-6 w-auto opacity-30 transition-opacity hover:opacity-60" />
+          </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
-          <Image src="/visa.svg" alt="Visa" width={48} height={32} className="h-7 w-auto opacity-40 transition-opacity duration-300 hover:opacity-100" />
-          <Image src="/mastercard.webp" alt="Mastercard" width={48} height={32} className="h-7 w-auto opacity-40 transition-opacity duration-300 hover:opacity-100" />
-          <Image src="/paypal.png" alt="PayPal" width={48} height={32} className="h-7 w-auto opacity-40 transition-opacity duration-300 hover:opacity-100" />
-          <Image src="/apple-pay.svg" alt="Apple Pay" width={48} height={32} className="h-7 w-auto opacity-40 transition-opacity duration-300 hover:opacity-100" />
-          <Image src="/google_pay.png" alt="Google Pay" width={48} height={32} className="h-7 w-auto opacity-40 transition-opacity duration-300 hover:opacity-100" />
-        </div>
+        <hr className="my-8 border-gray-800" />
 
-        <div className="mt-10 flex flex-col items-center gap-4">
-          <Image src="/logo.png" alt="NEXGEAR" width={120} height={32} className="h-8 w-auto opacity-70" />
-          <p className="text-center text-xs text-gray-500">
-            © 2026 NEXGEAR. Tous droits réservés.
+        <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <p className="text-xs text-gray-600">
+            © 2026 NexGear. Tous droits réservés.
           </p>
         </div>
       </div>

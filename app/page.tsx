@@ -1,3 +1,4 @@
+import { CheckoutModal } from "@/components/CheckoutModal";
 import { FeatureHighlightsSection } from "@/components/feature-highlights-section";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -16,6 +17,7 @@ export default function Home() {
       </main>
       <Footer />
       <StickyCart />
+      <CheckoutModal />
     </>
   );
 }

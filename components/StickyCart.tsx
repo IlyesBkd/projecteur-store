@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { PRODUCT_PRICE } from "@/lib/constants";
+import { OLD_PRICE, PRODUCT_PRICE } from "@/lib/constants";
 
 import { CheckoutButton } from "./CheckoutButton";
 
@@ -36,7 +36,7 @@ export function StickyCart() {
         <div>
           <p className="text-sm font-semibold text-zinc-900">Projecteur NEXGEAR 4K V12</p>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-400 line-through">199,99 €</span>
+            <span className="text-xs text-gray-400 line-through">{OLD_PRICE}</span>
             <span className="text-base font-bold text-[#e53e3e]">{PRODUCT_PRICE}</span>
           </div>
         </div>

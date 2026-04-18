@@ -1,7 +1,5 @@
 "use client";
 
-import { STRIPE_PAYMENT_LINK } from "@/lib/constants";
-
 type CheckoutButtonProps = {
   className?: string;
   children: React.ReactNode;
@@ -24,9 +22,10 @@ export function CheckoutButton({ className, children }: CheckoutButtonProps) {
       }),
     }).catch(() => {});
 
-    setTimeout(() => {
-      window.location.href = STRIPE_PAYMENT_LINK;
-    }, 150);
+    const openCheckout = (window as unknown as Record<string, unknown>).__openCheckout;
+    if (typeof openCheckout === "function") {
+      (openCheckout as () => void)();
+    }
   };
 
   return (

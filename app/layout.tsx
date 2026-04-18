@@ -20,8 +20,8 @@ const headingFont = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "NEX-GEN — Projecteur 4K Professionnel",
-  description: "Découvrez le projecteur NEXGEAR 4K V12. Qualité 4K native, 800 ANSI Lumens, livraison offerte. Le meilleur projecteur pour votre home cinéma.",
+  title: "NexGear — Projecteur 4K Professionnel",
+  description: "Découvrez le projecteur NexGear 4K V12. Qualité 4K native, 800 ANSI Lumens, livraison offerte. Le meilleur projecteur pour votre home cinéma.",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
