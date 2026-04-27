@@ -73,92 +73,120 @@ function FeatureIcon({ icon }: { icon: FeatureItem["icon"] }) {
 
 export function ProductHeroSection() {
   return (
-    <section id="hero-section" className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(16,185,129,0.06),transparent)]" />
-      <div className="relative mx-auto w-full max-w-[1260px] px-4 pb-12 pt-8 sm:px-6 sm:pt-10 lg:px-10 lg:pb-16 lg:pt-12">
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1.13fr_0.87fr] lg:gap-12">
+    <section id="hero-section" className="relative overflow-hidden bg-gradient-to-b from-[#fafaf7] via-white to-white">
+      {/* Subtle decorative glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-20 top-1/3 h-[400px] w-[400px] rounded-full bg-emerald-500/5 blur-3xl" />
+        <div className="absolute -right-20 top-0 h-[500px] w-[500px] rounded-full bg-amber-500/[0.04] blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-[1260px] px-4 pb-16 pt-10 sm:px-6 sm:pt-12 lg:px-10 lg:pb-20 lg:pt-16">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          {/* Product image */}
           <div className="relative">
-            <div className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-              <Image
-                src="/images/product/hero-main.png"
-                alt="Projecteur NexGear 4K V12 avec trépied intégré"
-                width={1000}
-                height={1000}
-                priority
-                sizes="(min-width: 1280px) 690px, (min-width: 1024px) 58vw, 100vw"
-                className="h-auto w-full"
-              />
-            </div>
-            <div className="absolute left-4 top-4 rounded-full bg-red-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-red-600/30">
-              -37% Offre limitée
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-100 to-zinc-50 p-2 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.18)]">
+              <div className="overflow-hidden rounded-[20px] bg-white">
+                <Image
+                  src="/images/product/hero-main.png"
+                  alt="Projecteur NexGear 4K V12 avec trépied intégré"
+                  width={1000}
+                  height={1000}
+                  priority
+                  sizes="(min-width: 1280px) 640px, (min-width: 1024px) 55vw, 100vw"
+                  className="h-auto w-full"
+                />
+              </div>
             </div>
           </div>
 
-          <div>
-            <div className="flex items-center gap-3">
+          {/* Right column */}
+          <div className="lg:pt-4">
+            {/* Title - serif premium */}
+            <h1 className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.02em] text-zinc-900 sm:text-[2.8rem] lg:text-[3.1rem]">
+              Projecteur <em className="font-light italic text-emerald-700">NexGear</em>
+              <span className="block">4K V12</span>
+            </h1>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-zinc-500">
+              Une expérience cinéma premium, directement chez vous. Avec trépied intégré.
+            </p>
+
+            {/* Rating */}
+            <div className="mt-5 flex items-center gap-3">
               <div className="flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <span
-                    key={`rating-star-${index}`}
-                    className="inline-flex h-5 w-5 items-center justify-center rounded-[3px] bg-[#00b67a] text-[11px] leading-none text-white"
-                  >
-                    ★
-                  </span>
+                  <svg key={`star-${index}`} viewBox="0 0 24 24" className="h-4 w-4 text-amber-400" fill="currentColor">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
                 ))}
               </div>
-              <p className="text-sm font-medium text-zinc-500">2 176 avis vérifiés</p>
+              <span className="text-sm text-zinc-500">
+                <strong className="font-semibold text-zinc-700">4.8</strong> · 2 176 avis vérifiés
+              </span>
             </div>
 
-            <h1 className="mt-5 font-heading text-[2rem] leading-[1.1] tracking-tight text-zinc-900 sm:text-[2.4rem] lg:text-[2.6rem]">
-              Projecteur NexGear 4K V12
-              <span className="mt-1 block text-[0.65em] font-medium text-zinc-500">avec trépied intégré</span>
-            </h1>
-
-            <div className="mt-5 flex items-baseline gap-3">
-              <span className="text-[2.4rem] font-bold leading-none tracking-tight text-zinc-900">{PRODUCT_PRICE}</span>
-              <span className="text-lg text-zinc-400 line-through">{OLD_PRICE}</span>
-              <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700">Économisez 130€</span>
+            {/* Price block */}
+            <div className="mt-7 rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-white to-zinc-50/50 p-5">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-heading text-[3rem] font-medium leading-none tracking-tight text-zinc-900">
+                      {PRODUCT_PRICE}
+                    </span>
+                    <span className="text-base text-zinc-400 line-through">{OLD_PRICE}</span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-2 text-xs">
+                    <span className="rounded-full bg-emerald-50 px-2.5 py-1 font-semibold text-emerald-700">
+                      Économisez 130€
+                    </span>
+                    <span className="text-zinc-500">TVA incluse</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                  <span className="text-xs font-semibold text-emerald-700">En stock</span>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-2 flex items-center gap-2 text-sm">
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              <span className="text-emerald-700">En stock — Expédition sous 24h</span>
-            </div>
-
-            <hr className="my-5 border-zinc-100" />
-
-            <div className="grid grid-cols-1 gap-x-5 gap-y-2.5 text-sm text-zinc-700 sm:grid-cols-2">
+            {/* Features grid */}
+            <div className="mt-7 grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2">
               {featureItems.map((feature) => (
-                <div key={feature.label} className="flex items-center gap-2.5 leading-snug">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-100 text-zinc-600">
+                <div key={feature.label} className="group flex items-center gap-3">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-white transition-colors group-hover:bg-emerald-600">
                     <FeatureIcon icon={feature.icon} />
                   </span>
-                  <span className="font-medium">{feature.label}</span>
+                  <span className="text-sm font-medium text-zinc-800">{feature.label}</span>
                 </div>
               ))}
             </div>
 
+            {/* CTA */}
             <CheckoutButton
-              className="mt-7 block w-full rounded-xl bg-emerald-600 py-4 text-center text-lg font-bold text-white shadow-lg shadow-emerald-600/25 transition-all duration-300 hover:bg-emerald-500 hover:shadow-emerald-500/40 hover:-translate-y-0.5 active:translate-y-0"
+              className="group relative mt-8 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-zinc-900 py-4 text-center text-base font-semibold text-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.4)] transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_15px_45px_-10px_rgba(16,185,129,0.5)] hover:-translate-y-0.5"
             >
-              Acheter maintenant — {PRODUCT_PRICE}
+              <span>Acheter maintenant — {PRODUCT_PRICE}</span>
+              <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
             </CheckoutButton>
 
             <TrustBadges />
 
-            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-[14px] leading-relaxed text-zinc-700">
-              <div className="mb-2 flex items-center gap-2">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-sm font-semibold text-emerald-700">T</span>
-                <div>
-                  <span className="text-sm font-semibold text-zinc-900">Thierry P.</span>
-                  <span className="ml-2 text-xs text-[#00b67a]">★★★★★</span>
+            {/* Premium testimonial */}
+            <figure className="mt-8 border-l-2 border-emerald-600 pl-5">
+              <blockquote>
+                <p className="font-heading text-lg italic leading-relaxed text-zinc-700">
+                  &ldquo;Ce rétroprojecteur a littéralement changé la façon dont je consomme mes contenus multimédias.&rdquo;
+                </p>
+              </blockquote>
+              <figcaption className="mt-3 flex items-center gap-2.5">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-xs font-bold text-white">T</span>
+                <div className="text-sm">
+                  <span className="font-semibold text-zinc-900">Thierry P.</span>
+                  <span className="ml-2 text-xs text-amber-500">★★★★★</span>
                 </div>
-              </div>
-              <p className="italic text-zinc-600">
-                &ldquo;Ce rétroprojecteur a littéralement changé la façon dont je consomme mes contenus multimédias.
-                Je l&apos;utilise pour tout : films, séries, et même pour mes présentations au travail.&rdquo;
-              </p>
-            </div>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

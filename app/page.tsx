@@ -1,3 +1,4 @@
+import { ChatWidget } from "@/components/ChatWidget";
 import { CheckoutModal } from "@/components/CheckoutModal";
 import { FeatureHighlightsSection } from "@/components/feature-highlights-section";
 import { Footer } from "@/components/Footer";
@@ -18,6 +19,7 @@ export default function Home() {
       <Footer />
       <StickyCart />
       <CheckoutModal />
+      <ChatWidget />
     </>
   );
 }

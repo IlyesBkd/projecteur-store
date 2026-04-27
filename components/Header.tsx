@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { CheckoutButton } from "./CheckoutButton";
-
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -29,16 +27,10 @@ export function Header() {
       }`}
     >
       <div className="mx-auto w-full max-w-[1260px] px-4 sm:px-6 lg:px-10">
-        <div className="flex items-center justify-between py-3.5">
+        <div className="flex items-center justify-center py-3.5">
           <Link href="/" className="flex items-center">
             <Image src="/logo.png" alt="NexGear" width={120} height={32} className="h-8 w-auto brightness-0 invert" />
           </Link>
-
-          <CheckoutButton
-            className="inline-flex items-center rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-105 hover:bg-emerald-500 hover:shadow-emerald-500/40"
-          >
-            Acheter maintenant
-          </CheckoutButton>
         </div>
       </div>
     </header>
