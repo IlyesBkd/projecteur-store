@@ -4,10 +4,10 @@ import { HomePage } from "@/components/HomePage";
 import { seoCopy } from "@/lib/site-copy";
 
 export const metadata: Metadata = {
-  title: seoCopy["fr-FR"].title,
-  description: seoCopy["fr-FR"].description,
+  title: seoCopy["en-US"].title,
+  description: seoCopy["en-US"].description,
   alternates: {
-    canonical: "/",
+    canonical: "/en",
     languages: {
       "fr-FR": "/",
       "en-US": "/en",
@@ -15,6 +15,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  return <HomePage locale="fr-FR" />;
+export default function EnglishHome() {
+  return <HomePage locale="en-US" />;
 }

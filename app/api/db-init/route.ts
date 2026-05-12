@@ -14,14 +14,21 @@ export async function POST() {
         phone TEXT,
         address TEXT NOT NULL,
         city TEXT NOT NULL,
+        state TEXT,
+        country TEXT NOT NULL DEFAULT 'FR',
         postal_code TEXT NOT NULL,
         product TEXT NOT NULL DEFAULT 'Projecteur NEXGEAR 4K V12',
         amount_cents INTEGER NOT NULL,
+        currency TEXT NOT NULL DEFAULT 'eur',
         stripe_payment_intent_id TEXT,
         status TEXT NOT NULL DEFAULT 'paid',
         created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
       )
     `;
+
+    await sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS state TEXT`;
+    await sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS country TEXT NOT NULL DEFAULT 'FR'`;
+    await sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS currency TEXT NOT NULL DEFAULT 'eur'`;
 
     await sql`
       CREATE TABLE IF NOT EXISTS settings (

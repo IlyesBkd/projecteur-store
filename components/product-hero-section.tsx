@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-import { OLD_PRICE, PRODUCT_PRICE } from "@/lib/constants";
+import { Locale } from "@/lib/i18n";
+import { currencyForLocale, fallbackOldPriceCents, fallbackPriceCents, formatMoney } from "@/lib/pricing";
+import { productCopy } from "@/lib/site-copy";
 
 import { CheckoutButton } from "./CheckoutButton";
 import { TrustBadges } from "./TrustBadges";
@@ -10,14 +12,24 @@ type FeatureItem = {
   icon: "spark" | "sun" | "grid" | "focus" | "screen" | "audio";
 };
 
-const featureItems: FeatureItem[] = [
-  { label: "Véritable 4K natif", icon: "spark" },
-  { label: "800 ANSI Lumens (26.000 lumens)", icon: "sun" },
-  { label: "Correction intelligente", icon: "grid" },
-  { label: "Auto Focus", icon: "focus" },
-  { label: "Projection jusqu'à 300\"", icon: "screen" },
-  { label: "Qualité sonore optimisée", icon: "audio" },
-];
+const featureItems: Record<Locale, FeatureItem[]> = {
+  "fr-FR": [
+    { label: "Veritable 4K natif", icon: "spark" },
+    { label: "800 ANSI Lumens", icon: "sun" },
+    { label: "Correction intelligente", icon: "grid" },
+    { label: "Auto Focus", icon: "focus" },
+    { label: "Projection jusqu'a 300\"", icon: "screen" },
+    { label: "Qualite sonore optimisee", icon: "audio" },
+  ],
+  "en-US": [
+    { label: "Native 4K picture", icon: "spark" },
+    { label: "800 ANSI lumens", icon: "sun" },
+    { label: "Smart correction", icon: "grid" },
+    { label: "Auto focus", icon: "focus" },
+    { label: "Up to 300\" projection", icon: "screen" },
+    { label: "Enhanced sound", icon: "audio" },
+  ],
+};
 
 function FeatureIcon({ icon }: { icon: FeatureItem["icon"] }) {
   if (icon === "spark") {
@@ -71,10 +83,19 @@ function FeatureIcon({ icon }: { icon: FeatureItem["icon"] }) {
   );
 }
 
-export function ProductHeroSection() {
+type ProductHeroSectionProps = {
+  locale?: Locale;
+};
+
+export function ProductHeroSection({ locale = "fr-FR" }: ProductHeroSectionProps) {
+  const copy = productCopy[locale];
+  const currency = currencyForLocale(locale);
+  const price = formatMoney(fallbackPriceCents(currency), currency, locale);
+  const oldPrice = formatMoney(fallbackOldPriceCents(currency), currency, locale);
+  const discount = formatMoney(fallbackOldPriceCents(currency) - fallbackPriceCents(currency), currency, locale);
+
   return (
     <section id="hero-section" className="relative overflow-hidden bg-gradient-to-b from-[#fafaf7] via-white to-white">
-      {/* Subtle decorative glows */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-20 top-1/3 h-[400px] w-[400px] rounded-full bg-emerald-500/5 blur-3xl" />
         <div className="absolute -right-20 top-0 h-[500px] w-[500px] rounded-full bg-amber-500/[0.04] blur-3xl" />
@@ -82,13 +103,12 @@ export function ProductHeroSection() {
 
       <div className="relative mx-auto w-full max-w-[1260px] px-4 pb-16 pt-10 sm:px-6 sm:pt-12 lg:px-10 lg:pb-20 lg:pt-16">
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          {/* Product image */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-100 to-zinc-50 p-2 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.18)]">
               <div className="overflow-hidden rounded-[20px] bg-white">
                 <Image
                   src="/images/product/hero-main.png"
-                  alt="Projecteur NexGear 4K V12 avec trépied intégré"
+                  alt={copy.heroAlt}
                   width={1000}
                   height={1000}
                   priority
@@ -99,18 +119,14 @@ export function ProductHeroSection() {
             </div>
           </div>
 
-          {/* Right column */}
           <div className="lg:pt-4">
-            {/* Title - serif premium */}
-            <h1 className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-[-0.02em] text-zinc-900 sm:text-[2.8rem] lg:text-[3.1rem]">
-              Projecteur <em className="font-light italic text-emerald-700">NexGear</em>
+            <h1 className="font-heading text-[2.4rem] font-medium leading-[1.05] tracking-normal text-zinc-900 sm:text-[2.8rem] lg:text-[3.1rem]">
+              {locale === "en-US" ? "Projector " : "Projecteur "}
+              <em className="font-light italic text-emerald-700">NexGear</em>
               <span className="block">4K V12</span>
             </h1>
-            <p className="mt-3 max-w-md text-base leading-relaxed text-zinc-500">
-              Une expérience cinéma premium, directement chez vous. Avec trépied intégré.
-            </p>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-zinc-500">{copy.tagline}</p>
 
-            {/* Rating */}
             <div className="mt-5 flex items-center gap-3">
               <div className="flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -119,38 +135,32 @@ export function ProductHeroSection() {
                   </svg>
                 ))}
               </div>
-              <span className="text-sm text-zinc-500">
-                <strong className="font-semibold text-zinc-700">4.8</strong> · 2 176 avis vérifiés
-              </span>
+              <span className="text-sm text-zinc-500">{copy.rating}</span>
             </div>
 
-            {/* Price block */}
             <div className="mt-7 rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-white to-zinc-50/50 p-5">
               <div className="flex items-end justify-between gap-4">
                 <div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-heading text-[3rem] font-medium leading-none tracking-tight text-zinc-900">
-                      {PRODUCT_PRICE}
-                    </span>
-                    <span className="text-base text-zinc-400 line-through">{OLD_PRICE}</span>
+                  <div className="flex flex-wrap items-baseline gap-3">
+                    <span className="font-heading text-[3rem] font-medium leading-none tracking-normal text-zinc-900">{price}</span>
+                    <span className="text-base text-zinc-400 line-through">{oldPrice}</span>
                   </div>
-                  <div className="mt-2 flex items-center gap-2 text-xs">
+                  <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
                     <span className="rounded-full bg-emerald-50 px-2.5 py-1 font-semibold text-emerald-700">
-                      Économisez 130€
+                      {copy.save} {discount}
                     </span>
-                    <span className="text-zinc-500">TVA incluse</span>
+                    <span className="text-zinc-500">{copy.tax}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-                  <span className="text-xs font-semibold text-emerald-700">En stock</span>
+                  <span className="text-xs font-semibold text-emerald-700">{copy.stock}</span>
                 </div>
               </div>
             </div>
 
-            {/* Features grid */}
             <div className="mt-7 grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2">
-              {featureItems.map((feature) => (
+              {featureItems[locale].map((feature) => (
                 <div key={feature.label} className="group flex items-center gap-3">
                   <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-white transition-colors group-hover:bg-emerald-600">
                     <FeatureIcon icon={feature.icon} />
@@ -160,30 +170,26 @@ export function ProductHeroSection() {
               ))}
             </div>
 
-            {/* CTA */}
-            <CheckoutButton
-              className="group relative mt-8 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-zinc-900 py-4 text-center text-base font-semibold text-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.4)] transition-all duration-300 hover:bg-emerald-700 hover:shadow-[0_15px_45px_-10px_rgba(16,185,129,0.5)] hover:-translate-y-0.5"
-            >
-              <span>Acheter maintenant — {PRODUCT_PRICE}</span>
+            <CheckoutButton className="group relative mt-8 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-zinc-900 py-4 text-center text-base font-semibold text-white shadow-[0_10px_40px_-10px_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-[0_15px_45px_-10px_rgba(16,185,129,0.5)]">
+              <span>{copy.cta} - {price}</span>
               <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
             </CheckoutButton>
 
-            <TrustBadges />
+            <TrustBadges locale={locale} />
 
-            {/* Premium testimonial */}
             <figure className="mt-8 border-l-2 border-emerald-600 pl-5">
               <blockquote>
-                <p className="font-heading text-lg italic leading-relaxed text-zinc-700">
-                  &ldquo;Ce rétroprojecteur a littéralement changé la façon dont je consomme mes contenus multimédias.&rdquo;
-                </p>
+                <p className="font-heading text-lg italic leading-relaxed text-zinc-700">&ldquo;{copy.reviewQuote}&rdquo;</p>
               </blockquote>
               <figcaption className="mt-3 flex items-center gap-2.5">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-xs font-bold text-white">T</span>
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-xs font-bold text-white">
+                  {copy.reviewAuthor.charAt(0)}
+                </span>
                 <div className="text-sm">
-                  <span className="font-semibold text-zinc-900">Thierry P.</span>
-                  <span className="ml-2 text-xs text-amber-500">★★★★★</span>
+                  <span className="font-semibold text-zinc-900">{copy.reviewAuthor}</span>
+                  <span className="ml-2 text-xs text-amber-500">*****</span>
                 </div>
               </figcaption>
             </figure>

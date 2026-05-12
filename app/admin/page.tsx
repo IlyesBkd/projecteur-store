@@ -13,6 +13,7 @@ type Order = {
   postal_code: string;
   product: string;
   amount_cents: number;
+  currency?: "eur" | "usd";
   stripe_payment_intent_id: string;
   status: string;
   created_at: string;
@@ -93,12 +94,18 @@ export default function AdminPage() {
   const formatDate = (iso: string) =>
     new Date(iso).toLocaleString("fr-FR", { timeZone: "Europe/Paris" });
 
+  const formatOrderPrice = (cents: number, currency: "eur" | "usd" = "eur") =>
+    new Intl.NumberFormat(currency === "usd" ? "en-US" : "fr-FR", {
+      style: "currency",
+      currency: currency.toUpperCase(),
+    }).format(cents / 100);
+
   // Simple password gate
   if (!authed) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
         <div className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-          <Image src="/logo.png" alt="NEXGEAR" width={120} height={32} className="mx-auto mb-6 h-8 w-auto" />
+          <Image src="/logo.png" alt="NEXGEAR" width={120} height={32} className="mx-auto mb-6 h-auto w-[120px]" />
           <h1 className="text-center font-heading text-xl font-semibold text-gray-900">Admin</h1>
           <form
             onSubmit={(e) => {
@@ -138,7 +145,7 @@ export default function AdminPage() {
       <header className="border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
           <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="NEXGEAR" width={100} height={28} className="h-7 w-auto" />
+            <Image src="/logo.png" alt="NEXGEAR" width={100} height={28} className="h-auto w-[100px]" />
             <span className="rounded-full bg-gray-900 px-3 py-1 text-xs font-semibold text-white">Admin</span>
           </div>
           <button
@@ -237,7 +244,7 @@ export default function AdminPage() {
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-lg font-bold text-gray-900">{formatPrice(order.amount_cents)}</p>
+                      <p className="text-lg font-bold text-gray-900">{formatOrderPrice(order.amount_cents, order.currency || "eur")}</p>
                       <p className="mt-1 text-xs text-gray-400">{formatDate(order.created_at)}</p>
                       {order.stripe_payment_intent_id && (
                         <a

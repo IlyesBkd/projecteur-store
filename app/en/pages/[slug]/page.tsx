@@ -1,13 +1,15 @@
 import { Metadata } from "next";
 
 import { LegalPageShell } from "@/components/LegalPageShell";
-import { legalPages } from "@/lib/legal-content";
+import { getLegalPages } from "@/lib/legal-content";
 
 type PageProps = {
   params: {
     slug: string;
   };
 };
+
+const legalPages = getLegalPages("en-US");
 
 export async function generateStaticParams() {
   return Object.keys(legalPages).map((slug) => ({ slug }));
@@ -23,6 +25,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function LegalPage({ params }: PageProps) {
-  return <LegalPageShell locale="fr-FR" slug={params.slug} />;
+export default function EnglishLegalPage({ params }: PageProps) {
+  return <LegalPageShell locale="en-US" slug={params.slug} />;
 }

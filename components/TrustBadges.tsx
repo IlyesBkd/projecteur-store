@@ -1,18 +1,23 @@
 import Image from "next/image";
 import { RefreshCw, ShieldCheck, Truck } from "lucide-react";
 
-const badges = [
-  { label: "Livraison Gratuite", sub: "48-72h", icon: Truck },
-  { label: "Garantie 2 ans", sub: "incluse", icon: ShieldCheck },
-  { label: "Retour 30 jours", sub: "satisfait ou remboursé", icon: RefreshCw },
-];
+import { Locale } from "@/lib/i18n";
+import { trustBadgesCopy } from "@/lib/site-copy";
 
-export function TrustBadges() {
+const icons = [Truck, ShieldCheck, RefreshCw];
+
+type TrustBadgesProps = {
+  locale?: Locale;
+};
+
+export function TrustBadges({ locale = "fr-FR" }: TrustBadgesProps) {
+  const badges = trustBadgesCopy[locale];
+
   return (
     <div className="mt-6 space-y-5">
       <div className="grid grid-cols-3 gap-2">
-        {badges.map((badge) => {
-          const Icon = badge.icon;
+        {badges.map((badge, index) => {
+          const Icon = icons[index];
           return (
             <div key={badge.label} className="flex flex-col items-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-2 py-3 text-center">
               <Icon className="h-5 w-5 text-emerald-600" aria-hidden="true" />

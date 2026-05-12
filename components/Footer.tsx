@@ -1,20 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const legalLinks = [
-  { label: "Mentions légales", href: "/pages/mentions-legales" },
-  { label: "CGV", href: "/pages/cgv" },
-  { label: "Politique de retour", href: "/pages/politique-de-retour" },
-  { label: "Politique de confidentialité", href: "/pages/politique-de-confidentialite" },
-  { label: "Contact", href: "/pages/contact" },
-];
+import { Locale, legalPath } from "@/lib/i18n";
 
-export function Footer() {
+const legalLinks = {
+  "fr-FR": [
+    { label: "Mentions legales", slug: "mentions-legales" },
+    { label: "CGV", slug: "cgv" },
+    { label: "Politique de retour", slug: "politique-de-retour" },
+    { label: "Politique de confidentialite", slug: "politique-de-confidentialite" },
+    { label: "Contact", slug: "contact" },
+  ],
+  "en-US": [
+    { label: "Legal notice", slug: "mentions-legales" },
+    { label: "Terms", slug: "cgv" },
+    { label: "Returns", slug: "politique-de-retour" },
+    { label: "Privacy", slug: "politique-de-confidentialite" },
+    { label: "Contact", slug: "contact" },
+  ],
+} satisfies Record<Locale, { label: string; slug: string }[]>;
+
+type FooterProps = {
+  locale?: Locale;
+};
+
+export function Footer({ locale = "fr-FR" }: FooterProps) {
   return (
     <footer className="bg-gray-950 text-gray-400">
       <div className="mx-auto w-full max-w-[1260px] px-4 py-12 sm:px-6 sm:py-16 lg:px-10">
         <div className="flex flex-col items-center gap-6">
-          <Image src="/logo.png" alt="NexGear" width={120} height={32} className="h-7 w-auto brightness-0 invert opacity-60" />
+          <Image src="/logo.png" alt="NexGear" width={120} height={32} className="h-auto w-[120px] brightness-0 invert opacity-60" />
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Image src="/visa.svg" alt="Visa" width={40} height={28} className="h-6 w-auto opacity-30 transition-opacity hover:opacity-60" />
@@ -29,18 +44,14 @@ export function Footer() {
 
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs">
-            {legalLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="transition-colors hover:text-white"
-              >
+            {legalLinks[locale].map((link) => (
+              <Link key={link.slug} href={legalPath(locale, link.slug)} className="transition-colors hover:text-white">
                 {link.label}
               </Link>
             ))}
           </div>
           <p className="text-xs text-gray-600">
-            © 2026 NexGear. Tous droits réservés.
+            {locale === "en-US" ? "© 2026 NexGear. All rights reserved." : "© 2026 NexGear. Tous droits reserves."}
           </p>
         </div>
       </div>

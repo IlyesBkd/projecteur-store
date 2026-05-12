@@ -1,15 +1,18 @@
-import { featureHighlights } from "@/lib/feature-content";
+import { getFeatureHighlights } from "@/lib/feature-content";
+import { Locale } from "@/lib/i18n";
 
 import { FeatureRow } from "./feature-row";
 import { WaveDivider } from "./wave-divider";
 
-export function FeatureHighlightsSection() {
+type FeatureHighlightsSectionProps = {
+  locale?: Locale;
+};
+
+export function FeatureHighlightsSection({ locale = "fr-FR" }: FeatureHighlightsSectionProps) {
+  const featureHighlights = getFeatureHighlights(locale);
+
   return (
-    <section
-      id="features"
-      aria-label="Présentation des fonctionnalités Nexgear"
-      className="bg-white"
-    >
+    <section id="features" aria-label={locale === "en-US" ? "NexGear feature overview" : "Presentation des fonctionnalites NexGear"} className="bg-white">
       <WaveDivider />
 
       <div className="relative overflow-hidden bg-[radial-gradient(circle_at_22%_0%,#1a2948_0%,#0a1220_38%,#05070f_100%)] py-14 sm:py-16 lg:py-24">

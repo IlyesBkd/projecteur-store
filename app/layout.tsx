@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { VisitorTracker } from "@/components/VisitorTracker";
+import { seoCopy } from "@/lib/site-copy";
 
 import "./globals.css";
 
@@ -21,8 +22,15 @@ const headingFont = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "NexGear — Projecteur 4K Professionnel",
-  description: "Découvrez le projecteur NexGear 4K V12. Qualité 4K native, 800 ANSI Lumens, livraison offerte. Le meilleur projecteur pour votre home cinéma.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://nexgear.fr"),
+  title: seoCopy["fr-FR"].title,
+  description: seoCopy["fr-FR"].description,
+  alternates: {
+    languages: {
+      "fr-FR": "/",
+      "en-US": "/en",
+    },
+  },
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -32,10 +40,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="fr">
-      <body
-        className={`${bodyFont.variable} ${headingFont.variable} bg-white font-body text-zinc-900 antialiased`}
-      >
+    <html lang="fr" suppressHydrationWarning>
+      <body className={`${bodyFont.variable} ${headingFont.variable} bg-white font-body text-zinc-900 antialiased`}>
         <GoogleAnalytics />
         <VisitorTracker />
         {children}
