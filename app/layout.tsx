@@ -3,7 +3,6 @@ import { Fraunces, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
-import { VisitorTracker } from "@/components/VisitorTracker";
 import { seoCopy } from "@/lib/site-copy";
 
 import "./globals.css";
@@ -43,7 +42,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="fr" suppressHydrationWarning>
       <body className={`${bodyFont.variable} ${headingFont.variable} bg-white font-body text-zinc-900 antialiased`}>
         <GoogleAnalytics />
-        <VisitorTracker />
         {children}
       </body>
     </html>
